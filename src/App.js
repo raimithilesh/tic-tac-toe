@@ -3,6 +3,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Square from './components/Square';
 import { Patterns } from './components/Patterns';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [board, setBoard] = useState(["","","","","","","","",""]);
@@ -33,6 +34,12 @@ function App() {
           return player
       }
       return val;
+    }));
+  }
+
+  const resetPlayers = ()=> {
+    setBoard(board.map((val, idx) => {     
+      return "";
     }));
   }
 
@@ -67,6 +74,7 @@ function App() {
   }
   return (
     <div className="App">
+     <button onClick={resetPlayers} type="button" class="btn btn-primary fixed-top">Reset</button>
      <div  className="board">
       <div className="row">
         <Square val={board[0]} chooseSquare={()=>chooseSquare(0)}/>
